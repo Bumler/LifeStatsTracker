@@ -10,4 +10,5 @@ public interface IRecord {
     LocalDate getEDate();
     Collection<RecordEntry> getEntries();
     String getNotes();
+    Integer getSeriesId();
 }

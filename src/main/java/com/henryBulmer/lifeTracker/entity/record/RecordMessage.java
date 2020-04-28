@@ -10,12 +10,14 @@ public class RecordMessage implements IRecord {
     private LocalDate eDate;
     private Collection<RecordEntry> entries;
     private String notes;
+    private Integer seriesId;
 
-    public RecordMessage(Integer id, LocalDate eDate, Collection<RecordEntry> entries, String notes) {
+    public RecordMessage(Integer id, LocalDate eDate, Collection<RecordEntry> entries, String notes, Integer seriesId ) {
         this.id = id;
         this.eDate = eDate;
         this.entries = entries;
         this.notes = notes;
+        this.seriesId = seriesId;
     }
 
     public LocalDate getEDate() {
@@ -33,4 +35,6 @@ public class RecordMessage implements IRecord {
     public Integer getId() {
         return id;
     }
+
+    public Integer getSeriesId() { return seriesId; }
 }

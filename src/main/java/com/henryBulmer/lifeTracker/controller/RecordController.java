@@ -30,4 +30,9 @@ public class RecordController {
     public int saveRecord( @RequestBody RecordMessage rec ){
         return recordService.saveRecord( rec );
     }
+
+    @GetMapping( value = "/series/{seriesId}" )
+    public Collection<Record> getRecordsBySeries( @PathVariable("seriesId") int seriesId ){
+        return recordService.getAllRecordsBySeries( seriesId );
+    }
 }

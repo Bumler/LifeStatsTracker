@@ -20,6 +20,10 @@ public class RecordService {
         return this.recordDao.getAllRecords();
     }
 
+    public Collection<Record> getAllRecordsBySeries( int seriesId ){
+        return this.recordDao.getAllRecordsBySeriesId( seriesId );
+    }
+
     public Record getRecord( int id ){ return this.recordDao.getRecord( id ); }
 
     public Integer saveRecord( RecordMessage recMessage ) {

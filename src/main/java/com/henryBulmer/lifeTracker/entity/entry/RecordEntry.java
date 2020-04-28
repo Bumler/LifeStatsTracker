@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
         use = JsonTypeInfo.Id.NAME,
         property = "type")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = NumericalEntry.class, name = EntryType.NUMERICAL ),
-        @JsonSubTypes.Type(value = TextEntry.class, name = EntryType.TEXT )
+        @JsonSubTypes.Type(value = NumericalEntry.class, name = EntryTypes.NUMERICAL ),
+        @JsonSubTypes.Type(value = TextEntry.class, name = EntryTypes.TEXT )
 })
-public abstract class RecordEntry<TValue> {
+public abstract class RecordEntry<TValue> implements Entry {
     private String name;
-    private int entryId;
+    private Integer entryId;
     private TValue value;
     private String entryType;
 
@@ -31,7 +31,7 @@ public abstract class RecordEntry<TValue> {
         return name;
     }
 
-    public int getEntryId() {
+    public Integer getId() {
         return entryId;
     }
 
