@@ -1,12 +1,12 @@
-package com.henryBulmer.lifeTracker.entity;
+package com.henryBulmer.lifeTracker.entity.record;
 
-import com.henryBulmer.lifeTracker.entity.entries.RecordEntry;
+import com.henryBulmer.lifeTracker.entity.entry.RecordEntry;
 
 import java.time.LocalDate;
 import java.util.Collection;
 
-public class Record {
-    private int id;
+public class Record implements IRecord {
+    private Integer id;
     private LocalDate kDate;
     private LocalDate eDate;
     private Collection<RecordEntry> entries;
@@ -20,11 +20,20 @@ public class Record {
         this.notes = notes;
     }
 
-    public int getId() {
+    public Record( IRecord rec ){
+        this.id = rec.getId();
+        this.eDate = rec.getEDate();
+        this.entries = rec.getEntries();
+        this.notes = rec.getNotes();
+
+        this.kDate = LocalDate.now();
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,23 +49,11 @@ public class Record {
         return eDate;
     }
 
-    public void setEDate(LocalDate eDate) {
-        this.eDate = eDate;
-    }
-
     public Collection<RecordEntry> getEntries() {
         return entries;
     }
 
-    public void setEntries(Collection<RecordEntry> entries) {
-        this.entries = entries;
-    }
-
     public String getNotes() {
         return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
     }
 }

@@ -1,4 +1,4 @@
-package com.henryBulmer.lifeTracker.entity.entries;
+package com.henryBulmer.lifeTracker.entity.entry;
 
 public class TextEntry extends RecordEntry<String> {
     public TextEntry(String name, int entryId, String val ) {

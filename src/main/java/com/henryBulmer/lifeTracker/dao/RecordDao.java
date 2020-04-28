@@ -1,8 +1,8 @@
 package com.henryBulmer.lifeTracker.dao;
 
-import com.henryBulmer.lifeTracker.entity.Record;
-import com.henryBulmer.lifeTracker.entity.entries.NumericalEntry;
-import com.henryBulmer.lifeTracker.entity.entries.RecordEntry;
+import com.henryBulmer.lifeTracker.entity.record.Record;
+import com.henryBulmer.lifeTracker.entity.entry.NumericalEntry;
+import com.henryBulmer.lifeTracker.entity.entry.RecordEntry;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -60,4 +60,19 @@ public class RecordDao {
     }
 
     public Record getRecord(int id ){ return records.get( id ); }
+
+    public Integer addRecord(Record rec) {
+        int id = nextRecordId;
+        nextRecordId++;
+
+        rec.setId( id );
+
+        records.put( id, rec );
+
+        return id;
+    }
+
+    public void updateRecord(Record rec){
+        records.put( rec.getId(), rec );
+    }
 }

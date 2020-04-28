@@ -1,12 +1,11 @@
 package com.henryBulmer.lifeTracker.controller;
 
-import com.henryBulmer.lifeTracker.entity.Record;
+import com.henryBulmer.lifeTracker.entity.record.IRecord;
+import com.henryBulmer.lifeTracker.entity.record.Record;
+import com.henryBulmer.lifeTracker.entity.record.RecordMessage;
 import com.henryBulmer.lifeTracker.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -17,13 +16,18 @@ public class RecordController {
     @Autowired
     private RecordService recordService;
 
-    @RequestMapping( method = RequestMethod.GET )
+    @GetMapping
     public Collection<Record> getAllRecords(){
         return recordService.getAllRecords();
     }
 
-    @RequestMapping( value = "/{id}", method = RequestMethod.GET )
+    @GetMapping( value = "/{id}" )
     public Record getRecordById(@PathVariable("id") int id ){
         return recordService.getRecord( id );
+    }
+
+    @PostMapping
+    public int saveRecord( @RequestBody RecordMessage rec ){
+        return recordService.saveRecord( rec );
     }
 }
